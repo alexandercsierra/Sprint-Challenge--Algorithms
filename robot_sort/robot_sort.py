@@ -140,23 +140,38 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
+
         while self.light_is_on() == False:
             self.set_light_on()
             self.swap_item()
             self.move_right()
+            # print('in the while', self._list)
+            # print('holding', self._item)
+            # print('position', self._position)
+            # print('item at position', self._list[self._position])
             for i in range(len(self._list)-1):
-
+                # print('holding', self._item)
+                # print('comparing to', self._list[self._position])
+                # print('position', self._position)
+                # print('current list', self._list)
+                
                 #next item is greater than current
                 if self.compare_item() == 1:
-                    
+
+                    #place greater value in correct spot
                     self.swap_item()
+                    #move to empty space and place lower value down
                     self.move_left()
                     self.swap_item()
+                    #move back to greater item and pick it up
                     self.move_right()
                     self.swap_item()
+                    #a swap has ocurred, so turn light off
                     self.set_light_off()
+                    #if this is not the last item continue right
                     if self.can_move_right() == True:
                         self.move_right()
+                    #if this is the last value, put it down
                     else: 
                         # self.move_left()
                         self.swap_item()
@@ -164,11 +179,13 @@ class SortingRobot:
                 #next item is less than current
                 elif self.compare_item() == -1:
                     if self.can_move_left() == True:
+                        #go back to empty space and put down item
                         self.move_left()
                         self.swap_item()
+                        #move forward to greater item and pick it up
                         self.move_right()
                         self.swap_item()
-                        #it is not the last item
+                        #it is not the last item continue right
                         if self.can_move_right() == True:
                             self.move_right()
                         #it is the last item, just put it back
@@ -176,6 +193,7 @@ class SortingRobot:
                             self.swap_item()
 
                     else:
+                        # print('in the else')
                         self.swap_item()
                         self.move_right()
                         self.swap_item()
@@ -186,12 +204,21 @@ class SortingRobot:
                     self.swap_item()
                     self.move_right()
                     self.swap_item()
-                    self.move_right()
+                    if self.can_move_right() == True:
+                        self.move_right()
+                    else:
+                        self.swap_item()
+                    # self.set_light_off()
+
+                elif self.compare_item() == None:
+                    # print('none')
+                    self.swap_item()
+                    self.set_light_off()
                     
             #reset the robot position back to 0
             self.reset()       
 
-
+        
         return self._list
 
 
