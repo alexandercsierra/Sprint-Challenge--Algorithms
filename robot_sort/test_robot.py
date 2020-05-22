@@ -10,29 +10,27 @@ class Test(unittest.TestCase):
         self.large_list = [20, 77, 45, 16, 15, 91, 12, 6, 24, 89, 53, 19, 85, 56, 13, 74, 48, 98, 9, 92, 25, 35, 54, 44, 50, 5, 75, 34, 2, 42, 87, 49, 76, 52, 43, 23, 7, 80, 66, 14, 46, 90, 88, 40, 97, 10, 57, 63, 1, 18, 67, 79, 96, 27, 73, 28, 32, 61, 30, 8, 17, 93, 26, 51, 60, 55, 62, 31, 47, 64, 39, 22, 99, 95, 83, 70, 38, 69, 36, 41, 37, 65, 84, 3, 29, 58, 0, 94, 4, 11, 33, 86, 21, 81, 72, 82, 59, 71, 68, 78]
         self.large_varied_list = [1, -38, -95, 4, 23, -73, -65, -36, 85, 2, 58, -26, -55, 96, 55, -76, 64, 45, 69, 36, 69, 47, 29, -47, 13, 89, -57, -88, -87, 54, 60, 56, -98, -78, 59, 93, -41, -74, 73, -35, -23, -79, -35, 46, -18, -18, 37, -64, 14, -57, -2, 15, -85, 45, -73, -2, 79, -87, -100, 21, -51, 22, 26, -59, 81, 59, -24, 24, -81, 43, 61, 52, 38, -88, -95, 87, -57, -37, -65, -47, -3, 21, -77, 98, 25, 1, -36, 39, 78, 47, -35, -40, -69, -81, 11, -47, 21, 25, -53, -31]
         self.random_list = [random.randint(0, 100) for i in range(0, 100)]
-#         self.random_list = [39, 13, 79, 78, 89, 8, 66, 64, 86, 15, 72, 17, 96, 46, 96, 73, 92, 6, 22, 86, 4, 96, 38, 74, 47, 76, 3, 79, 70, 30, 63, 64, 85, 93, 24, 6, 32, 26, 10, 41, 99, 14, 18, 63, 70, 89, 60, 70, 65, 7, 60, 32, 13, 51, 21, 21, 24, 15, 21, 47, 38, 46, 100, 85, 2, 83, 65, 100, 
-# 59, 27, 33, 92, 74, 67, 13, 16, 43, 70, 36, 1, 63, 85, 16, 10, 46, 
-# 51, 8, 66, 34, 8, 90, 14, 62, 77, 7, 19, 36, 48, 75, 22]
 
-    # def test_sorting_small_list(self):
-    #     robot = SortingRobot(self.small_list)
-    #     robot.sort()
-    #     self.assertEqual(robot._list, sorted(self.small_list))
 
-    # def test_sorting_medium_list(self):
-    #     robot = SortingRobot(self.medium_list)
-    #     robot.sort()
-    #     self.assertEqual(robot._list, sorted(self.medium_list))
+    def test_sorting_small_list(self):
+        robot = SortingRobot(self.small_list)
+        robot.sort()
+        self.assertEqual(robot._list, sorted(self.small_list))
 
-    # def test_sorting_large_list(self):
-    #     robot = SortingRobot(self.large_list)
-    #     robot.sort()
-    #     self.assertEqual(robot._list, sorted(self.large_list))
+    def test_sorting_medium_list(self):
+        robot = SortingRobot(self.medium_list)
+        robot.sort()
+        self.assertEqual(robot._list, sorted(self.medium_list))
 
-    # def test_sorting_large_varied_list(self):
-    #     robot = SortingRobot(self.large_varied_list)
-    #     robot.sort()
-    #     self.assertEqual(robot._list, sorted(self.large_varied_list))
+    def test_sorting_large_list(self):
+        robot = SortingRobot(self.large_list)
+        robot.sort()
+        self.assertEqual(robot._list, sorted(self.large_list))
+
+    def test_sorting_large_varied_list(self):
+        robot = SortingRobot(self.large_varied_list)
+        robot.sort()
+        self.assertEqual(robot._list, sorted(self.large_varied_list))
 
     def test_sorting_random_list(self):
         robot = SortingRobot(self.random_list)

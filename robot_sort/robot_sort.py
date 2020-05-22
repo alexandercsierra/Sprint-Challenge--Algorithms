@@ -145,16 +145,8 @@ class SortingRobot:
             self.set_light_on()
             self.swap_item()
             self.move_right()
-            # print('in the while', self._list)
-            # print('holding', self._item)
-            # print('position', self._position)
-            # print('item at position', self._list[self._position])
-            for i in range(len(self._list)-1):
-                # print('holding', self._item)
-                # print('comparing to', self._list[self._position])
-                # print('position', self._position)
-                # print('current list', self._list)
-                
+
+            for i in range(len(self._list)-1):                
                 #next item is greater than current
                 if self.compare_item() == 1:
 
@@ -173,7 +165,6 @@ class SortingRobot:
                         self.move_right()
                     #if this is the last value, put it down
                     else: 
-                        # self.move_left()
                         self.swap_item()
 
                 #next item is less than current
@@ -193,7 +184,6 @@ class SortingRobot:
                             self.swap_item()
 
                     else:
-                        # print('in the else')
                         self.swap_item()
                         self.move_right()
                         self.swap_item()
@@ -208,10 +198,8 @@ class SortingRobot:
                         self.move_right()
                     else:
                         self.swap_item()
-                    # self.set_light_off()
 
                 elif self.compare_item() == None:
-                    # print('none')
                     self.swap_item()
                     self.set_light_off()
                     
