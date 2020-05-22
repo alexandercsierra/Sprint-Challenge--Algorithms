@@ -29,7 +29,7 @@ P - Plan
     binary search - this problem lends itself to binary search because eggs will not break on a floor lower than f. So if eggs not breaking, f must be a higher-numbered floor and we don't need to search any lower floors. We can eliminate half of the floors each time.
 
 
-E - Execute (in pseudocode)
+E - Execute 
 
     define a function which takes as parameters n floors
         initialize a variable to hold the starting point for our search
@@ -42,3 +42,5 @@ E - Execute (in pseudocode)
             if at the current floor eggs break, but at the floor below, they do not, we have found f and can return this floor number
             if at the current floor eggs are not breaking, set the new start to be the former midpoint (plus one so we don't search the actual midpoint again) and the end stays the same. Continue searching.
             if at the current floor eggs break, but at the floor below, they also break, we need to keep searching, but floor 'f' is below. Set the end to be the former midpoint -1 and continue searching.
+
+    Runtime is O(logn) for binary search, since we will never be searching through the whole array at any time. It will halve each iteration.
