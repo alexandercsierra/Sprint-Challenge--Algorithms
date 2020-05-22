@@ -92,12 +92,74 @@ class SortingRobot:
         """
         return self._light == "ON"
 
+    def reset(self):
+        """
+        Resets robot position to item at index zero and picks up first item
+        """
+
+        while self.can_move_left() == True:
+            self.move_left()
+            print('still holding', self._item)
+
+        if self._list[self._position] == None:
+            self.swap_item()
+            print('swapped', self._item)
+
+        # self.swap_item()
+
     def sort(self):
         """
         Sort the robot's list.
         """
-        # Fill this out
-        pass
+        while self.light_is_on() == False:
+            self.set_light_on()
+            self.swap_item()
+            self.move_right()
+            for i in range(len(self._list)-1):
+                print('holding', self._item)
+                print('comparing with', self._list[self._position])
+                #next item is greater than current
+                if self.compare_item() == 1:
+                    
+                    self.swap_item()
+                    self.move_left()
+                    self.swap_item()
+                    self.move_right()
+                    self.swap_item()
+                    self.set_light_off()
+                    if self.can_move_right() == True:
+                        self.move_right()
+                    else: 
+                        # self.move_left()
+                        self.swap_item()
+
+                #next item is less than current
+                elif self.compare_item() == -1:
+                    if self.can_move_left() == True:
+                        self.move_left()
+                        self.swap_item()
+
+                        print('in the if')
+                    else:
+                        print('in the else')
+                        self.swap_item()
+                        self.move_right()
+                        self.swap_item()
+                    # self.move_right()
+                    # self.swap_item()
+                    # self.move_right()
+                    # self.set_light_on()
+                    
+                elif self.compare_item() == 0:
+                    self.swap_item()
+                    self.move_right()
+            print('reseting')
+            print('holding', self._item)
+            print('current list', self._list)
+            self.reset()       
+
+
+        return self._list
 
 
 if __name__ == "__main__":
@@ -110,3 +172,6 @@ if __name__ == "__main__":
 
     robot.sort()
     print(robot._list)
+
+
+    
