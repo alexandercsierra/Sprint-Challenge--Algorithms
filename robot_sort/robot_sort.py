@@ -99,11 +99,9 @@ class SortingRobot:
 
         while self.can_move_left() == True:
             self.move_left()
-            print('still holding', self._item)
 
         if self._list[self._position] == None:
             self.swap_item()
-            print('swapped', self._item)
 
         # self.swap_item()
 
@@ -116,8 +114,7 @@ class SortingRobot:
             self.swap_item()
             self.move_right()
             for i in range(len(self._list)-1):
-                print('holding', self._item)
-                print('comparing with', self._list[self._position])
+
                 #next item is greater than current
                 if self.compare_item() == 1:
                     
@@ -136,7 +133,6 @@ class SortingRobot:
                 #next item is less than current
                 elif self.compare_item() == -1:
                     if self.can_move_left() == True:
-                        print('in the if')
                         self.move_left()
                         self.swap_item()
                         self.move_right()
@@ -147,26 +143,19 @@ class SortingRobot:
                             self.swap_item()
 
                     else:
-                        print('in the else')
                         self.swap_item()
                         self.move_right()
                         self.swap_item()
-                    # self.move_right()
-                    # self.swap_item()
-                    # self.move_right()
-                    # self.set_light_on()
+
                     
                 elif self.compare_item() == 0:
-                    # self.swap_item()
                     self.move_left()
                     self.swap_item()
                     self.move_right()
                     self.swap_item()
                     self.move_right()
                     
-            print('reseting')
-            print('holding', self._item)
-            print('current list', self._list)
+
             self.reset()       
 
 
