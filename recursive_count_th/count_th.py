@@ -5,6 +5,16 @@ Your function must utilize recursion. It cannot contain any loops.
 '''
 def count_th(word):
     
-    # TBC
+    def count_ths(word, count):
+        print(word)
+        if len(word)<=1:
+            # print('word in the if', word)
+            return count
+        elif word[-2] + word[-1]== 'th':
+            # print('word in the else', word)
+            count +=1
     
-    pass
+        # print('word before return', word)
+        return count_ths(word[:-1], count)
+
+    return count_ths(word, 0)
