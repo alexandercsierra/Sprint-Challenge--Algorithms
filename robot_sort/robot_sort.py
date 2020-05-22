@@ -105,6 +105,37 @@ class SortingRobot:
 
         # self.swap_item()
 
+
+#Understand
+    #inputs and outputs
+    #input will be a list held in self._list
+    #output will be a list in sorted order
+
+    #the input array will need to be rearranged in place (no extra variables) to be returned at the end
+    #the robot can only move one slot to the left or right at any given time
+    #the robot cannot swap two items at once, if it puts a card down, it will be "holding" None. So this must be accounted for
+    #the robot has a light with a boolean value
+
+#Plan
+    #implement a bubble-sort-like technique (since bubble sort uses no extra variables and is only concerned with the next item)
+    #it will be slightly different than just a normal bubble sort since the robot has its own position separate from the position we might be at inside a loop, and it cannot simply swap two items. It must replace one with None.
+
+    #Normal bubble sort uses a boolean which is flipped when a swap occurs. This way it knows that no more swaps have taken place and it is finished sorting. I will use the robots light as a substitute for this.
+
+    #set the light on and pick up an item for comparison, then move right so we aren't comparing to none
+        #check if the item we're holding is greater, less than, or equal to the item we're comparing it to
+        #swap them accordingly
+
+        #do this for each item in the array
+
+        #when we have reached the end of the list, reset to 0
+        #if we have done no swaps, the light should be on and we exit the loop, sorting complete
+        #if we have done at least one swap, the light is still off and we continue through again
+
+
+
+
+
     def sort(self):
         """
         Sort the robot's list.
@@ -137,8 +168,10 @@ class SortingRobot:
                         self.swap_item()
                         self.move_right()
                         self.swap_item()
+                        #it is not the last item
                         if self.can_move_right() == True:
                             self.move_right()
+                        #it is the last item, just put it back
                         else:
                             self.swap_item()
 
@@ -147,7 +180,7 @@ class SortingRobot:
                         self.move_right()
                         self.swap_item()
 
-                    
+                #next item is the same as current    
                 elif self.compare_item() == 0:
                     self.move_left()
                     self.swap_item()
@@ -155,7 +188,7 @@ class SortingRobot:
                     self.swap_item()
                     self.move_right()
                     
-
+            #reset the robot position back to 0
             self.reset()       
 
 
